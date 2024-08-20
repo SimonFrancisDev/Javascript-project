@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        const products =  {
+            name: "Girls date white snickers",
+            price: 1000,
+            qauntity: 10,
+            rating: {
+                stars: 5,
+                count: 87
+            },
+            fun: function sayHi () {
+                console.log("Hi")
+            },
+            "delivery-date": "1Oth August, 2024"
+        }
+
+        // // using the dot notatio
+        // console.log(products.rating.stars)
+        // console.log(products.name);
+        // console.log(products.qauntity)
+
+        // // user defined method.
+        // products.fun();
+
+        // // inbuilt methods in Javascript
+        // Math.random();
+        // Math.ceil();
+
+        // // using bracket notation
+        // console.log(products["rating"]["stars"]);
+        // console.log(products["delivery-date"]) 
+
+        // console.log(products);
+        // // adding a new item to an object
+        // products.manDate = '20/1/2024'
+        // console.log(products);
+
+        // let userPhoneNumber = prompt("Please put your phone number");
+        // products.deliveryLine = userPhoneNumber;
+        // console.log(products);
+
+        // deleting items from an object
+        delete products.manDate;
+        console.log(products);
+    </script>
+</body>
+</html>

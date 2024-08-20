@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <style>
+        .para-info {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <div class="view-info">
+        <p class="para-info js-para-info">
+            Welcome to Rock Papers Scissors games <br>
+            This games is played between two people, <br>
+            The computer User and the AI. <br>
+            Rock beats scissors, scissors beats paper <br>
+            paper beats rock. <br>
+            You can click 'r' for to make rock move <br>
+            click 'p' to make a paper move and <br>
+            click 's' to make the move for scissors. <br>
+            To reset score, you can make use of our shortcut <br>
+            by clicking 'c'.
+        </p>
+        <button class="js-control-view-btn">view game info</button>
+    </div>
+
+
+    <button onclick="playGame('rock')">Rock</button> 
+    <button onclick="playGame('paper')">Paper</button> 
+    <button onclick="playGame('scissors')">Scissors</button> 
+    <button onclick="resetScore()">Reset Score</button>
+    <div class="result js-result"></div>
+
+    <script>
+    let score =  JSON.parse(localStorage.getItem('score')) 
+        || {
+                wins: 0,
+                loss: 0,
+                ties: 0
+        }
+
+        let computerMove = '';
+        const resultDiv = document.querySelector('.js-result')
+
+        const playGame = (userMove) => {
+            pickComputerMove();
+            if(userMove === 'rock') {
+            let result = '';
+            if(computerMove === 'rock') {
+            result = 'Tie.';
+            score.ties += 1;
+            resultDiv.innerHTML = `You picked rock and computer picked ${computerMove} \n Result: ${result}
+                \n Score: Wins: ${score.wins}, Loss: ${score.loss}, Ties: ${score.ties}
+            `;
+        } 
+        else if(computerMove === 'paper') {
+            result = 'You lose.';
+            score.loss += 1;
+            resultDiv.innerHTML = `You picked rock and computer picked ${computerMove} \n Result: ${result}
+                \n Score: Wins: ${score.wins}, Loss: ${score.loss}, Ties: ${score.ties}
+            `;
+        }
+        else if(computerMove === 'scissors') {
+            result = 'You win';
+            score.wins += 1;
+            resultDiv.innerHTML = `You picked rock and computer picked ${computerMove} \n Result: ${result}
+                \n Score: Wins: ${score.wins}, Loss: ${score.loss}, Ties: ${score.ties}
+            `;
+        }
+            } else if(userMove === 'paper') {
+                result = '';
+        if(computerMove === 'rock') {
+            result = 'You win.';
+            score.wins += 1;
+            resultDiv.innerHTML = `You picked paper and computer picked ${computerMove} \n Result: ${result}
+                \n Score: Wins: ${score.wins}, Loss: ${score.loss}, Ties: ${score.ties}
+            `;
+        } 
+        else if(computerMove === 'paper') {
+            result = 'Tie.';
+            score.ties += 1;
+            resultDiv.innerHTML = `You picked paper and computer picked ${computerMove} \n Result: ${result}
+                \n Score: Wins: ${score.wins}, Loss: ${score.loss}, Ties: ${score.ties}
+            `;
+        }
+        else if(computerMove === 'scissors') {
+            result = 'You lose';
+            score.loss += 1
+            resultDiv.innerHTML = `You picked paper and computer picked ${computerMove} \n Result: ${result}
+                \n Score: Wins: ${score.wins}, Loss: ${score.loss}, Ties: ${score.ties}
+            `;
+        } 
+            } else if(userMove === 'scissors') {
+                result = '';
+        if(computerMove === 'rock') {
+            result = 'You lose.';
+            score.loss += 1
+            resultDiv.innerHTML = `You picked scissors and computer picked ${computerMove} \n Result: ${result}
+                \n Score: Wins: ${score.wins}, Loss: ${score.loss}, Ties: ${score.ties}
+            `;
+        } 
+        else if(computerMove === 'paper') {
+            result = 'You win.';
+            score.wins += 1
+            resultDiv.innerHTML = `You picked scissors and computer picked ${computerMove} \n Result: ${result}
+                \n Score: Wins: ${score.wins}, Loss: ${score.loss}, Ties: ${score.ties}
+            `;
+        }
+        else if(computerMove === 'scissors') {
+            result = 'Tie.';
+            score.ties += 1
+            resultDiv.innerHTML = `You picked scissors and computer picked ${computerMove} \n Result: ${result}
+                \n Score: Wins: ${score.wins}, Loss: ${score.loss}, Ties: ${score.ties}
+            `;
+        }  
+            // saving our score to local storage.
+            localStorage.setItem('score', JSON.stringify(score)); 
+            }
+
+        }
+
+
+        function pickComputerMove() {
+            let randomNumber = Math.random();
+        if(randomNumber >= 0 && randomNumber < 1/3) {
+            computerMove = 'rock';
+            console.log(computerMove) 
+        } 
+        else if(randomNumber >= 1/3 && randomNumber < 2/3) {
+            computerMove = 'paper';
+            console.log(computerMove) 
+        }
+        else if(randomNumber >= 2/3 && randomNumber < 1) {
+            computerMove = 'scissors';
+            console.log(computerMove) 
+        }
+        return computerMove;
+        }
+
+
+        // Handling the reset score function
+        function resetScore () {
+            score.wins = 0;
+            score.ties = 0;
+            score.loss = 0; 
+            alert('The score was reset, click ok to exit....');   
+        }
+
+        document.body.addEventListener('keypress', (event) => {
+            if(event.key === 'r') {
+                playGame('rock');
+            } else if(event.key === 'p') {
+                playGame('paper')
+            } else if(event.key === 's') {
+                playGame('scissors');
+            } else if(event.key === 'c') {
+                resetScore();
+            }
+        })
+
+
+        let controlViewBtn = document.querySelector('.js-control-view-btn'); 
+        let paraInfo = document.querySelector('.para-info');  
+        controlViewBtn.addEventListener('click', () => {
+            if(controlViewBtn.innerHTML === 'view game info') {
+                paraInfo.style.display = 'block';
+                controlViewBtn.innerHTML = 'hide game info';
+            } else if(controlViewBtn.innerHTML === 'hide game info') {
+                paraInfo.style.display = 'none';
+                controlViewBtn.innerHTML = 'view game info';
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT Text Effect Example</title>
+</head>
+<body>
+    <div id="output"></div>
+    
+    <script>
+        let text = "Hi am Francis, a staff here in bizmarrow";
+        let index = 0;
+        let speed = 200;
+
+        function typeText  () {
+            setTimeout(() => {
+                if(index < text.length) {
+                document.getElementById('output')
+                .innerHTML += text[index];
+                index++;
+                typeText();
+            }
+            }, speed)
+        }
+        typeText();
+
+        console.log(text.length);
+    </script>
+</body>
+</html>

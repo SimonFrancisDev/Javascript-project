@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        /* button {
+            background-color: navy;
+            color: greenyellow;
+            border: 2px dashed red;
+            padding: 30px;
+            border-radius: 100px;
+            height: 100px;
+            width: 100px;
+            margin-top: 20px;
+        } */
+
+        /*
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+        } */
+
+        /*.button-div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            column-gap: 30px;
+        } */
+
+        /*#nBullets {
+            color: greenyellow;
+            background-color: navy;
+            width: 250px;
+            font-family: gabriola;
+            font-size: x-large;
+        } */
+    </style>
+</head>
+<body> 
+    
+        <!-- mouse events 
+         <div class="container">
+            <div id="nBullets">Bullets: </div>
+            <div class="button-div">
+                <button id="js-shoot-btn">Shoot => </button>
+                <button id="js-reload-btn">Reload</button>
+            </div>
+         </div> -->
+
+         New password <br>
+         <input id="pass-1" type="password"> <br> <br>
+
+         Confirm password <br>
+         <input id="pass-2" type="password"> <br> <br>
+
+         <button id="sub-btn" type="submit">Submit</button>
+
+
+
+    <script>
+        let pass1 = document.getElementById('pass-1'); 
+        let pass2 = document.getElementById('pass-2');
+        let submitButton = document.getElementById('sub-btn');
+        // validating password;
+        submitButton.addEventListener('click', () => {
+            if(pass2.value != pass1.value) {
+                alert("Password mismatched, Please check and try again");
+            } else {
+                alert('data submitted successfully');
+            }
+        })
+
+        document.body.addEventListener('keypress', () => {
+            console.log(event.key);
+        })
+
+
+
+
+
+
+        // // keyboard events
+        // let pass1 = document.getElementById('pass-1');
+        // let pass2 = document.getElementById('pass-2');
+
+        // pass1.addEventListener('keypress', (event) => {
+        //     console.log(event.key)
+        // })
+
+
+        // handling mouse events
+        // let bElement = document.getElementById('nBullets');
+        // let shootBtn = document.getElementById('js-shoot-btn');
+        // let reloadBtn = document.getElementById('js-reload-btn');
+
+        
+        // let bulletNum = 20;
+        // bElement.innerHTML = `Bullets: ${bulletNum}`;
+        // shootBtn.addEventListener('click', () => {
+        //     if(bulletNum > 0 ) {
+        //         bulletNum--;
+        //         bElement.innerHTML = `Bullets: ${bulletNum}`;
+        //     }
+        //     else if(bulletNum === 0) {
+        //         alert('No bullets click the "reload" button');
+        //     }
+        // })
+
+        // reloadBtn.addEventListener('click', () => {
+        //     bulletNum = 20;
+        //     bElement.innerHTML = `Bullets: ${bulletNum}`;
+        //     alert("happy reload");
+        // })
+
+    </script>
+</body>
+</html>

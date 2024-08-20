@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booleans and If Statements</title>
+</head>
+<body>
+    = assignment operator; <br>
+    === strictly equal to <br>
+    > greater than <br>
+    < less than <br>
+    >= greater than or eqaul to <br>
+    <= less than or equal to <br>
+    && the and operator <br>
+    || the Or Operator.  <br>
+    
+    if <br>
+    else if <br>
+    else <br>
+    swich.
+
+    <script>
+        const age = 20;
+        const level = 30;
+        const trueResultText = "Age is greater than 30";
+        const falseResulttext = "Age is not greater than 30";
+
+        // The AND operator
+        if(age === 40 && level < 40) {
+            console.log("both booleans are through");
+        } else {
+            console.log("either of the booleans could be false");
+        }
+
+        // The OR operator
+        if(age > 40 || level > 50) {
+            console.log("At least one side of the conditions is true")
+        } else {
+            console.log("none of the conditions returned through");
+        }
+
+        // The Tenary Operator
+        age > 30 ? console.log(trueResultText) : console.log(falseResulttext) 
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetTimeout</title>
+
+    <style>
+        .added-message {
+            color: green;
+            font-family: gabriola;
+            font-size: smaller;
+            display: block;
+            transition: all 1.9s;
+        }
+
+        .added-mssg-hidden {
+            display: none;
+            transition: all 1.9s;
+        }
+
+        .js-added-to-cart {
+            transition: all 1.9s;
+        }
+    </style>
+</head>
+<body>
+    <div class="added-mssg-hidden js-added-to-cart">Added</div>
+    <button onclick="showAddedToCartMessage()">Add to cart</button>
+
+
+    <script>
+
+        setTimeout(function sayHi () {
+            console.log("Hi every one i'm sherlock");
+        }, 2000)
+        // synchrounous operation.
+        // console.log("Starting first task")
+        // console.log("Starting second task")
+        // console.log("Starting the third task");
+
+
+
+        function showAddedToCartMessage () {
+            document.querySelector('.js-added-to-cart')
+            .classList.add('added-message');
+            document.querySelector('.js-added-to-cart')
+            .classList.remove('added-mssg-hidden')
+
+            setTimeout(() => {
+                document.querySelector('.js-added-to-cart')
+                .classList.remove('added-message');
+                document.querySelector('.js-added-to-cart')
+                .classList.add('added-mssg-hidden')
+            }, 3000)
+        }
+    </script>
+</body>
+</html>
